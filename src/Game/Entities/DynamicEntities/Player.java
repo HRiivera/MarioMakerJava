@@ -25,7 +25,7 @@ public class Player extends BaseDynamicEntity {
 	public Animation playerLeftAnimation,playerRightAnimation,playerIdleRightAnimation, playerIdleLeftAnimation,
 	playerJumpRightAnimation, playerJumpLeftAnimation, playerRunRightAnimation, playerRunLeftAnimation;
 	public boolean falling = true, jumping = false,isBig=true,running = false,changeDirrection=false, doublejump=false;
-	public int jumpc = 2, djcounter =1, djcountertick =0;
+	public int djcounter =1, djcountertick =0;
 	public double gravityAcc = 0.38;
 	int changeDirectionCounter=0;
 	public int tickCounter=0;
@@ -79,12 +79,9 @@ public class Player extends BaseDynamicEntity {
 		}
 
 		//DK double jump
-		if(!jumping && !falling) {jumpc =2; }
-		djcountertick++;
-		if(djcountertick > 100) {
-			djcounter =1;
-			djcountertick =0;
-			jumpc=2;
+		if(!jumping && !falling) {djcounter=0;}
+	    if(djcounter==1) {
+	    	djcountertick++;
 		}
 
 		if (changeDirrection) {
@@ -176,7 +173,7 @@ public class Player extends BaseDynamicEntity {
 			if (marioBottomBounds.intersects(brickTopBounds)) {
 				if(brick instanceof CloudBlock && jumping) {}
 				else if(brick instanceof BorderBlock) {dead=true;}
-				else {
+				else if(!jumping){
 					mario.setY(brick.getY() - mario.getDimension().height + 1);
 					falling = false;
 					velY=0;
@@ -276,21 +273,22 @@ public class Player extends BaseDynamicEntity {
 	}
 
 	public void jump() {
-		if(this instanceof Mario && jumpc ==2 ) {
+		if(this instanceof Mario && djcounter==0) {
 			falling = false;
-			jumpc--;
 			jumping = true;
 			velY = 10;
+			djcounter++;
 			handler.getGame().getMusicHandler().playJump();
 
 		}
-		else if(this instanceof Mario && jumpc == 1 && djcounter==1) {
+		else if(this instanceof Mario && djcountertick>20 && djcounter==1) {
 			falling = false;
-			jumpc--;
 			jumping = true;
 			velY = 10;
+			djcounter++;
+			djcountertick=0;
 			handler.getGame().getMusicHandler().playJump();
-			djcounter--;
+
 		}
 		else if(this instanceof FunkyKong && !jumping && !falling){
 			jumping=true;

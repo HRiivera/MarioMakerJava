@@ -49,7 +49,7 @@ public class Mario extends Player{
 		if(!grabbed && !dead) {
 			super.tick();
 			if (!this.hit) {
-				if (handler.getKeyManager().jumpbutt && !handler.getKeyManager().up && !handler.getKeyManager().down && canMove) {
+				if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_SPACE) && !handler.getKeyManager().up && !handler.getKeyManager().down && canMove) {
 					this.jump();
 				}
 

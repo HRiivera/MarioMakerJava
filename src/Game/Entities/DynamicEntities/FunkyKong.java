@@ -49,7 +49,7 @@ public class FunkyKong extends Player{
 		if(!grabbed && !dead) {
 			super.tick();
 			if (!this.hit) {
-				if (handler.getKeyManager().jumpbutt2 && !handler.getKeyManager().up2 && !handler.getKeyManager().down2 && canMove) {
+				if (handler.getKeyManager().keyJustPressed(KeyEvent.VK_CONTROL) && !handler.getKeyManager().up2 && !handler.getKeyManager().down2 && canMove) {
 					this.jump();
 				}
 
