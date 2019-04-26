@@ -13,6 +13,7 @@ import Game.Entities.StaticEntities.BreakBlock;
 import Game.Entities.StaticEntities.CloudBlock;
 import Game.Entities.StaticEntities.MisteryBlock;
 import Game.GameStates.State;
+import Game.World.MapBuilder;
 import Main.Handler;
 import Resources.Animation;
 
@@ -346,6 +347,16 @@ public class Player extends BaseDynamicEntity {
 		dead=false;
 		this.x=initialX;
 		this.y=initialY;
+		velX=0;
+		velY=0;
+		if(this instanceof Mario) {
+		handler.getCamera().setX(handler.getMario().x- (MapBuilder.pixelMultiplier*6));
+		handler.getCamera().setY(handler.getMario().y - (MapBuilder.pixelMultiplier*10));
+		}
+		else if(this instanceof FunkyKong) {
+			handler.getCameraP2().setX(handler.getFunkyKong().x- (MapBuilder.pixelMultiplier*6));
+			handler.getCameraP2().setY(handler.getFunkyKong().y - (MapBuilder.pixelMultiplier*10));
+		}
 	}
 	public void setRespawn(int x, int y) {
 		initialX = x;

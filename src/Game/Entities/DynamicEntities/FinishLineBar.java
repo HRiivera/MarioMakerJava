@@ -9,27 +9,27 @@ import java.awt.*;
 public class FinishLineBar extends Item {
 	int initX;
 	int initY;
+	String movement = "Up";
 
     public FinishLineBar(int x, int y, int width, int height, Handler handler) {
         super(x, y, width, height, handler, Images.FinishLineBar);
         initX = x;
         initY= y;
-        direction = "Up";
     }
 
     @Override
     public void tick(){
     	if(this.y==initY) {
-    		direction = "Up";
+    		movement = "Up";
     	}
     	if(this.y==initY-228) {
-    		direction = "Down";
+    		movement = "Down";
     	}
-    	if(direction.equals("Up")) {
-    		y-=3;
+    	if(movement.equals("Up")) {
+    		this.y-=3;
     	}
-    	if(direction.equals("Down")) {
-    		y+=3;
+    	if(movement.equals("Down")) {
+    		this.y+=3;
     	}
     	
     	if(handler.getMario().getBounds().intersects(this.getBounds())) {

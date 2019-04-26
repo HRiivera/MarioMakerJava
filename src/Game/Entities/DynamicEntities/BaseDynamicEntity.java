@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 
 public class BaseDynamicEntity extends EntityBase {
 
-	public static String direction = "Right";
+	public String direction = "Right";
 	public boolean falling = true, ded = false;
 	protected int dedCounter = 0;
 	public double gravityAcc = 0.38;
