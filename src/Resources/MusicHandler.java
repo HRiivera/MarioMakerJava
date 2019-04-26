@@ -96,4 +96,14 @@ public class MusicHandler {
 		Clip clip = getClip(loadAudio("stomp"));
 		clip.start();
 	}
+	public void playCheckPoint() {
+		Clip clip = getClip(loadAudio("MW_PassGate"));
+		clip.start();
+	}
+	public void playBreakBlock() {
+		Clip clip = getClip(loadAudio("MW_BreakBlock"));
+		clip.start();
+	}
+	
+	
 }

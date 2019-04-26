@@ -22,6 +22,7 @@ public class CheckPointBar extends Item {
 		if(handler.getMario().getBounds().intersects(this.getBounds())) {
 			handler.getMario().setRespawn(initX, initY);
 			this.x=100000;
+			handler.getGame().getMusicHandler().playCheckPoint();
 		}
 	}
 }

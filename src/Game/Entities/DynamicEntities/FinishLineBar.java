@@ -36,6 +36,7 @@ public class FinishLineBar extends Item {
     		handler.getMario().touchFinish = true;
     		handler.getMario().timeCompleted = (double) (handler.getMario().tickCounter-120)/60;
     		this.x=1000000;
+    		handler.getGame().getMusicHandler().playCheckPoint();
     	}
     	
     	

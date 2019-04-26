@@ -172,7 +172,25 @@ public class Player extends BaseDynamicEntity {
 			Rectangle brickTopBounds = brick.getTopBounds();
 			if (marioBottomBounds.intersects(brickTopBounds)) {
 				if(brick instanceof CloudBlock && jumping) {}
-				else if(brick instanceof BorderBlock) {dead=true;}
+				if(brick instanceof BorderBlock) {				
+					if(isBig) {
+					hit=true;
+					isBig=false;
+					this.x+=48;
+					this.y+=48;
+					this.height-=48;
+					this.width-=48;
+					setDimension(new Dimension(this.width, this.height));
+				}
+				else if(hitInvin==0)
+					dead=true;
+			
+				}
+				if(brick instanceof BreakBlock && groundpound) {
+					brick.x=100000;
+					brick.y=100000;
+					handler.getGame().getMusicHandler().playBreakBlock();
+				}
 				else if(!jumping){
 					mario.setY(brick.getY() - mario.getDimension().height + 1);
 					falling = false;
@@ -206,10 +224,24 @@ public class Player extends BaseDynamicEntity {
 			Rectangle brickBottomBounds = brick.getBottomBounds();
 			if (marioTopBounds.intersects(brickBottomBounds)) {
 				mario.setY(brick.getY() + brick.height);
-				if(brick instanceof BorderBlock) {dead=true;}
+				if(brick instanceof BorderBlock) {
+					if(isBig) {
+					hit=true;
+					isBig=false;
+					this.x+=48;
+					this.y+=48;
+					this.height-=48;
+					this.width-=48;
+					setDimension(new Dimension(this.width, this.height));
+				}
+				else if(hitInvin==0)
+					dead=true;
+			
+				}
 				if(brick instanceof BreakBlock && jumping) {
 					brick.x=100000;
 					brick.y=100000;
+					handler.getGame().getMusicHandler().playBreakBlock();
 				}
 				falling=true;
 				velY=0;
@@ -231,7 +263,20 @@ public class Player extends BaseDynamicEntity {
 		for (BaseStaticEntity brick : bricks) {
 			Rectangle brickBounds = !toRight ? brick.getRightBounds() : brick.getLeftBounds();
 			if (marioBounds.intersects(brickBounds)) {
-				if(brick instanceof BorderBlock) {dead=true;}
+				if(brick instanceof BorderBlock) {				
+					if(isBig) {
+					hit=true;
+					isBig=false;
+					this.x+=48;
+					this.y+=48;
+					this.height-=48;
+					this.width-=48;
+					setDimension(new Dimension(this.width, this.height));
+				}
+				else if(hitInvin==0)
+					dead=true;
+			
+				}
 				velX=0;
 				if(toRight)
 					mario.setX(brick.getX() - mario.getDimension().width);

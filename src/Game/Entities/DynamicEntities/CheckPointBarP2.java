@@ -25,6 +25,7 @@ public class CheckPointBarP2 extends Item {
 			if(handler.getFunkyKong().getBounds().intersects(this.getBounds())) {
 				handler.getFunkyKong().setRespawn(initX, initY);
 				this.x=10000000;
+				handler.getGame().getMusicHandler().playCheckPoint();
 			}
 		}	
 	}

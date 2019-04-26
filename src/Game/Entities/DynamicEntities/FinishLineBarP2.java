@@ -38,7 +38,7 @@ public class FinishLineBarP2 extends Item {
 				handler.getFunkyKong().touchFinish = true;
 				handler.getFunkyKong().timeCompleted = (double) (handler.getFunkyKong().tickCounter-120)/60;
 				this.x=1000000;
-				System.out.println("Touch");
+				handler.getGame().getMusicHandler().playCheckPoint();
 			}
 		}
 

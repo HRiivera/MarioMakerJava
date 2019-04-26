@@ -6,6 +6,7 @@ import Display.UI.UIStringButton;
 import Game.World.MapBuilder;
 import Input.KeyManager;
 import Input.MouseManager;
+import Main.GameSetUp;
 import Main.Handler;
 import Resources.Images;
 import Display.UI.UIAnimationButton;

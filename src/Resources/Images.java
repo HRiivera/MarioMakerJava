@@ -142,6 +142,9 @@ public class Images {
     public static BufferedImage densejungle;
     public static BufferedImage nightjungle;
     
+    public static BufferedImage SpikeTrap;
+    private SpriteSheet MarioMaker;
+    
     
     public Images() {
     	
@@ -232,6 +235,7 @@ public class Images {
             BananasSheet =  new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/bananas.png")));
             FinishLineSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/FinishLine.png")));
             ZingerSheet = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/zinger.png")));
+            MarioMaker = new SpriteSheet(ImageIO.read(getClass().getResourceAsStream("/Sheets/SMW Sheet.png")));
             
             //Images
             title = mainmenuSpriteSheet.crop(16,16,256,224);
@@ -605,6 +609,7 @@ public class Images {
             cloudBlock = blocks.crop(0, 0, 32, 32);
             beamBlock = blocks.crop(32, 0, 32, 32);
             donutBlock = blocks.crop(64, 0, 32, 32);
+            SpikeTrap = MarioMaker.crop(307, 69, 16, 16);
             
             
 
